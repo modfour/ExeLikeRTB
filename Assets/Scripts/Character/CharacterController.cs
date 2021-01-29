@@ -120,8 +120,8 @@ public class CharacterController : MonoBehaviour
     public void CalcMyPos(int column, int row)
     {
         Vector3 myPos = new Vector3();
-        myPos.x = -10.065f + 1.83f * column;
-        myPos.y = 1.96f - 0.88f * row;
+        myPos.x = (float)CommonConstants.positionZero.x + (float)CommonConstants.floorLength * column;
+        myPos.y = (float)CommonConstants.positionZero.y * 2.5f - (float)CommonConstants.floorWidth * row;
         this.transform.position = myPos;
     }
 
