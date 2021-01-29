@@ -6,9 +6,9 @@ using UnityEngine;
 public class FloorMaster : MonoBehaviour
 {
     // Floorを格納する二次元配列
-    private GameObject[,] battleField = new GameObject[(int)CommonConstants.fieldColum+2,(int)CommonConstants.fieldRow+2];
+    private GameObject[,] battleField = new GameObject[(int)CommonConstants.fieldColumn+2,(int)CommonConstants.fieldRow+2];
     // マス目上に存在するゲームオブジェクトを格納する二次元配列
-    private GameObject[,] battleObjects = new GameObject[(int)CommonConstants.fieldColum + 2, (int)CommonConstants.fieldRow + 2];
+    private GameObject[,] battleObjects = new GameObject[(int)CommonConstants.fieldColumn + 2, (int)CommonConstants.fieldRow + 2];
 
     public GameObject floorPrefab;
     public Sprite floorSprite;
@@ -24,7 +24,7 @@ public class FloorMaster : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for (int column = 0; column < (int)CommonConstants.fieldColum+2; column++)
+        for (int column = 0; column < (int)CommonConstants.fieldColumn+2; column++)
         {
             for (int row = 0; row < (int)CommonConstants.fieldRow + 2; row++)
             {
@@ -33,8 +33,8 @@ public class FloorMaster : MonoBehaviour
 
                 // 配置場所初期値セット
                 Vector3 pos = battleField[column, row].transform.position;
-                pos.x = -10.065f + 1.83f * column;
-                pos.y = 0.88f - 0.88f * row;
+                pos.x = (float)CommonConstants.positionZero.x + (float)CommonConstants.floorLength * column;
+                pos.y = (float)CommonConstants.positionZero.y - (float)CommonConstants.floorWidth * row;
                 pos.z = 1.0f;
                 battleField[column, row].transform.position = pos;
 
@@ -42,7 +42,7 @@ public class FloorMaster : MonoBehaviour
                 Floor fl = battleField[column, row].GetComponent<Floor>();
                 fl.Column = column;
                 fl.Row = row;
-                if (column > 0 && column < (int)CommonConstants.fieldColum + 1 && row > 0 && row < (int)CommonConstants.fieldRow + 1)
+                if (column > 0 && column < (int)CommonConstants.fieldColumn + 1 && row > 0 && row < (int)CommonConstants.fieldRow + 1)
                 {
                     sr.sprite = floorSprite;
                     fl.IsMovable = true;

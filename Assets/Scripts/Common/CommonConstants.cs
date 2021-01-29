@@ -5,8 +5,20 @@ using UnityEngine;
 public static class CommonConstants
 {
     // フィールドの縦・横
-    public static int fieldColum = 8;
+    public static int fieldColumn = 8;
     public static int fieldRow = 5;
+
+    // フロア1枚あたりの縦・横
+    public static float floorLength = 1.83f;
+    public static float floorWidth = 0.88f;
+
+    // 左上をゼロとした時の起点
+    public static Vector3 positionZero = new Vector3(
+        -1 * (float)CommonConstants.floorLength * ((int)CommonConstants.fieldColumn + 1) / 2,
+        (float)CommonConstants.floorWidth,
+        0.0f
+    );
+
 
     // キャラクター画像の向きを定義する定数値
     public static readonly Vector3 rightward = new Vector3(-2.0f, 2.0f, 1.0f);
