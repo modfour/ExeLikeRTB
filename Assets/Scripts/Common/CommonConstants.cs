@@ -21,8 +21,8 @@ public static class CommonConstants
 
 
     // キャラクター画像の向きを定義する定数値
-    public static readonly Vector3 rightward = new Vector3(-2.0f, 2.0f, 1.0f);
-    public static readonly Vector3 leftward = new Vector3(2.0f, 2.0f, 1.0f);
+    public static readonly Vector3 rightward = new Vector3(-2.5f, 2.5f, 1.0f);
+    public static readonly Vector3 leftward = new Vector3(2.5f, 2.5f, 1.0f);
 
     // キャラクターの初期HPを定義する定数値
     public static int initHitPoint = 150;
