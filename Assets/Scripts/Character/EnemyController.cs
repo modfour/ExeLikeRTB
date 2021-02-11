@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Transactions;
 using UnityEngine;
 
-public class EnemyController : CharacterController
+public class EnemyController : Character
 {
     // 移動する間隔(秒)
     public float moveInterval;

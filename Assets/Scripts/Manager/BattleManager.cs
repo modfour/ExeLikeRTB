@@ -50,27 +50,27 @@ public class BattleManager : MonoBehaviour
     }
 
     // ダメージを与える処理
-    void DamageProcess(CharacterController characterController)
+    void DamageProcess(Character character)
     {
-        GameObject characterFloor = floorMaster.BattleField[characterController.Column, characterController.Row];
+        GameObject characterFloor = floorMaster.BattleField[character.Column, character.Row];
         List<DamageContainer> damageContainers = characterFloor.GetComponent<Floor>().DamageContainers;
 
         for (int index = damageContainers.Count - 1; index >= 0; index--)
         {
-            int damage = damageContainers[index].GetDamage(characterController.IsPlayer);
+            int damage = damageContainers[index].GetDamage(character.IsPlayer);
             if (damage != 0)
             {
-                characterController.HitPoint -= damage;
-                characterController.Animator.SetInteger("MotionIndex", (int)CommonConstants.MotionIndex.damage);
+                character.HitPoint -= damage;
+                character.Animator.SetInteger("MotionIndex", (int)CommonConstants.MotionIndex.damage);
                 if (damageContainers[index].HitOnceOnly)
                 {
                     DamageContainer damageContainer = damageContainers[index];
                     damageContainers.Remove(damageContainers[index]);
                     Destroy(damageContainer.gameObject);
                 }
-                if (characterController.HitPoint < 1)
+                if (character.HitPoint < 1)
                 {
-                    characterController.gameObject.SetActive(false);
+                    character.gameObject.SetActive(false);
                 }
             }
         }

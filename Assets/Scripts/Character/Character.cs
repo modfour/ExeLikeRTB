@@ -2,10 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class CharacterController : MonoBehaviour
+public class Character : MonoBehaviour
 {
     // 攻撃のPrefab
     public GameObject bulletPrefab;
