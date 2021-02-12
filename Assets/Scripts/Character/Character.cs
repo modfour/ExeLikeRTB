@@ -94,7 +94,7 @@ public class Character : MonoBehaviour
             bulletIcons[index] = Instantiate(bulletIconPrefab);
             bulletIcons[index].GetComponent<BulletIcon>().Index = index;
             bulletIcons[index].GetComponent<BulletIcon>().IsPlayers = isPlayer;
-            bulletIcons[index].transform.SetParent(charactersPannel.transform);
+            bulletIcons[index].transform.SetParent(charactersPannel.transform,false);
         }
     }
 
