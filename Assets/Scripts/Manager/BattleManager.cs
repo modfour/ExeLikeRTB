@@ -11,6 +11,9 @@ public class BattleManager : MonoBehaviour
     // floorを処理する場合はFloorMasterを経由する
     private FloorMaster floorMaster;
 
+    // MessageWindow
+    public GameObject messageWindow;
+
     public FloorMaster FloorMaster
     {
         get { return this.floorMaster; }
@@ -21,6 +24,8 @@ public class BattleManager : MonoBehaviour
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
         enemyController = GameObject.Find("Enemy").GetComponent<EnemyController>();
         floorMaster = GameObject.Find("Floor").GetComponent<FloorMaster>();
+        messageWindow = GameObject.Find("/Canvas/MessageWindow");
+        messageWindow.SetActive(false);
     }
 
     // Update is called once per frame
@@ -71,6 +76,7 @@ public class BattleManager : MonoBehaviour
                 if (character.HitPoint < 1)
                 {
                     character.gameObject.SetActive(false);
+                    messageWindow.SetActive(true);
                 }
             }
         }
