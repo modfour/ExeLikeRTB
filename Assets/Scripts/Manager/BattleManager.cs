@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class BattleManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class BattleManager : MonoBehaviour
 
     // MessageWindow
     public GameObject messageWindow;
+    private TextMeshProUGUI mainMessageText;
 
     public FloorMaster FloorMaster
     {
@@ -25,6 +27,7 @@ public class BattleManager : MonoBehaviour
         enemyController = GameObject.Find("Enemy").GetComponent<EnemyController>();
         floorMaster = GameObject.Find("Floor").GetComponent<FloorMaster>();
         messageWindow = GameObject.Find("/Canvas/MessageWindow");
+        mainMessageText = messageWindow.transform.Find("MainMessage").GetComponent<TextMeshProUGUI>();
         messageWindow.SetActive(false);
     }
 
@@ -73,9 +76,18 @@ public class BattleManager : MonoBehaviour
                     damageContainers.Remove(damageContainers[index]);
                     Destroy(damageContainer.gameObject);
                 }
+                // ダメージ処理の結果、いずれかのHitPointがゼロ以下になった場合
                 if (character.HitPoint < 1)
                 {
                     character.gameObject.SetActive(false);
+                    if (character.IsPlayer)
+                    {
+                        mainMessageText.text = "Enemy Wins.\nPress R to Restrart.";
+                    }
+                    else
+                    {
+                        mainMessageText.text = "Player WIns.\nPress R to Restart.";
+                    }
                     messageWindow.SetActive(true);
                 }
             }
