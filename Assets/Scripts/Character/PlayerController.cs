@@ -10,7 +10,7 @@ public class PlayerController : Character
     {
         this.IsPlayer = true;
         base.Start();
-        this.Column = 3;
+        this.Column = 2;
         this.Row = 3;
         CalcMyPos(this.Column, this.Row);
     }

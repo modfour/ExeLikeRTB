@@ -16,7 +16,7 @@ public class EnemyController : Character
     {
         this.IsPlayer = false; // 敵なので
         base.Start();
-        this.Column = 8;
+        this.Column = 7;
         this.Row = 3;
         CalcMyPos(this.Column, this.Row);
     }
